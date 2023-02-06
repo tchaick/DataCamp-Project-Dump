@@ -37,26 +37,38 @@ The shell decides if a path is absolute or relative by looking at its first char
 
 - You are in /home/repl. Use ls with a relative path to list the file that has an absolute path of /home/repl/course.txt (and only that file).
 
-    ```ls course.txt```
+    ``` 
+    ls course.txt
+    ```
 
 - You are in /home/repl. Use ls with a relative path to list the file /home/repl/seasonal/summer.csv (and only that file).
  
-    ```ls seasonal/summer.csv```
+    ```
+    ls seasonal/summer.csv
+    ```
 
 - You are in /home/repl. Use ls with a relative path to list the contents of the directory /home/repl/people.
 
-    ```ls people```
+    ```
+    ls people
+    ```
 
 ### How can I move to another directory
 - You are in /home/repl/. Change directory to /home/repl/seasonal using a relative path.
-    ```cd seasonal```
+    ```
+    cd seasonal
+    ```
 
 - Use pwd to check that you're there.
 
-    ```pwd```
+    ```
+    pwd
+    ```
 
 - Use ls without any paths to see what's in that directory.
-    ```ls```
+    ```
+    ls
+    ```
 
 ### How can I move up a directory
 
@@ -69,11 +81,15 @@ If you are in /home/repl/seasonal, where does cd ~/../. take you?
 ### How can I copy files
 - Make a copy of seasonal/summer.csv in the backup directory (which is also in /home/repl), calling the new file summer.bck.
 
-```cp seasonal/summer.csv backup/summer.bck```
+```
+cp seasonal/summer.csv backup/summer.bck
+```
 
 - Copy spring.csv and summer.csv from the segit asonal directory into the backup directory without changing your current working directory (/home/repl).
 
-```cp/seasonal/spring.csv seasonal/summer.csv backup```
+```
+cp/seasonal/spring.csv seasonal/summer.csv backup 
+```
 
 
 ### How can I move a file
@@ -103,37 +119,62 @@ ls
 
 ### How can I delete files
 1. You are in /home/repl. Go into the seasonal directory.
-    ```cd seasonal```
+    ```
+    cd seasonal
+    ```
 2. Remove autumn.csv
-    ```rm autumn.csv
+    ```
+    rm autumn.csv 
+    ```
 3. Go back to your home directory. 
-    ```cd ..```
+    ```
+    cd ..
+    ```
 4. Remove seasonal/summer.csv
-    ```rm seasonal/summer.csv```
+    ```
+    rm seasonal/summer.csv
+    ```
 
 ### How can I create and delete directories?
 1. Without changing directories, delete the file agarwal.txt in the people directory.
-    ```rm people/agarwal.txt```
+```
+rm people/agarwal.txt
+```
 
 2. Now that the people directory is empty, use a single command to delete it.
-    ```rmdir people```
+```
+rmdir people
+```
     
 3. Since a directory is not a file, you must use the command mkdir directory_name to create a new (empty) directory. Use this command to create a new directory called yearly below your home directory.
-    ```mkdir yearly```
+```
+mkdir yearly
+```
 
 4. Now that yearly exists, create another directory called 2017 inside it without leaving your home directory.
-    ```mkdir yearly/2017```
+```
+mkdir yearly/2017
+```
 
 
 
 ### Wrapping up
 1. Use cd to go into /tmp.
-    ``` cd /tmp```
+```
+cd /tmp
+```
 
 2. List the contents of /tmp without typing a directory name.
-    ``` ls ```
+```
+ls
+```
 
 3. Make a new directory inside /tmp called scratch.
-    ``` mkdir ```
+```
+mkdir
+```
+
 4. Move /home/repl/people/agarwal.txt into /tmp/scratch. We suggest you use the ~ shortcut for your home directory and a relative path for the second rather than the absolute path.
-    ``` mv ~/people/agarwal.txt /tmp/scratch ```
+```
+mv ~/people/agarwal.txt /tmp/scratch
+```
