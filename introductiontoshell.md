@@ -9,16 +9,16 @@ My notes and solutions below.
 
 What is the relationship between the graphical file explorer that most people use and the command-line shell?
 
-- [] The file explorer lets you view and edit files, while the shell lets you run programs.
-- [] The file explorer is built on top of the shell.
-- [] The shell is part of the operating system, while the file explorer is separate.
+- [ ] The file explorer lets you view and edit files, while the shell lets you run programs.
+- [ ] The file explorer is built on top of the shell.
+- [ ] The shell is part of the operating system, while the file explorer is separate.
 - [x] They are both interfaces for issuing commands to the operating system.
 
 ### Where am I
 Run ```pwd```. Where are you right now?
 
-- [] /home
-- [] /repl
+- [ ] /home
+- [ ] /repl
 - [x] /home/repl
 
 
@@ -27,10 +27,10 @@ Run ```pwd```. Where are you right now?
 Use ls with an appropriate argument to list the files in the directory /home/repl/seasonal (which holds information on dental surgeries by date, broken down by season). Which of these files is not in that directory?
 
 ```ls /home/repl/seasonal```
-- [] autumn.csv
-- [] fall.csv
+- [ ] autumn.csv
+- [ ] fall.csv
 - [x] spring.csv
-- [] winter.csv
+- [ ] winter.csv
 
 ### How else can I identify files and directories
 
