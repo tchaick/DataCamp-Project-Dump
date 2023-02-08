@@ -1,9 +1,9 @@
 # Introduction to Shell
 
-Retook the course as a refresher this February 6, 2023. 
+Retook the course as a refresher this February 6, 2023 | Completed: February 9, 2023
 My notes and solutions below. 
 
-## Manipulating files and directories
+# Manipulating files and directories
 
 ### How does the shell compare to a desktop interface
 
@@ -25,7 +25,9 @@ Run ```pwd```. Where are you right now?
 
 Use ls with an appropriate argument to list the files in the directory /home/repl/seasonal (which holds information on dental surgeries by date, broken down by season). Which of these files is not in that directory?
 
-```ls /home/repl/seasonal```
+```
+ls /home/repl/seasonal
+```
 - [ ] autumn.csv
 - [ ] fall.csv
 - [x] spring.csv
@@ -35,37 +37,37 @@ Use ls with an appropriate argument to list the files in the directory /home/rep
 
 The shell decides if a path is absolute or relative by looking at its first character: If it begins with /, it is absolute. If it does not begin with /, it is relative.
 
-- You are in /home/repl. Use ls with a relative path to list the file that has an absolute path of /home/repl/course.txt (and only that file).
+1. You are in /home/repl. Use ls with a relative path to list the file that has an absolute path of /home/repl/course.txt (and only that file).
 
     ``` 
     ls course.txt
     ```
 
-- You are in /home/repl. Use ls with a relative path to list the file /home/repl/seasonal/summer.csv (and only that file).
+2. You are in /home/repl. Use ls with a relative path to list the file /home/repl/seasonal/summer.csv (and only that file).
  
     ```
     ls seasonal/summer.csv
     ```
 
-- You are in /home/repl. Use ls with a relative path to list the contents of the directory /home/repl/people.
+3. You are in /home/repl. Use ls with a relative path to list the contents of the directory /home/repl/people.
 
     ```
     ls people
     ```
 
 ### How can I move to another directory
-- You are in /home/repl/. Change directory to /home/repl/seasonal using a relative path.
+1. You are in /home/repl/. Change directory to /home/repl/seasonal using a relative path.
     ```
     cd seasonal
     ```
 
-- Use pwd to check that you're there.
+2. Use pwd to check that you're there.
 
     ```
     pwd
     ```
 
-- Use ls without any paths to see what's in that directory.
+3.  Use ls without any paths to see what's in that directory.
     ```
     ls
     ```
@@ -79,13 +81,13 @@ If you are in /home/repl/seasonal, where does cd ~/../. take you?
 - [ ] / (the root directly)
 
 ### How can I copy files
-- Make a copy of seasonal/summer.csv in the backup directory (which is also in /home/repl), calling the new file summer.bck.
+1. Make a copy of seasonal/summer.csv in the backup directory (which is also in /home/repl), calling the new file summer.bck.
 
 ```
 cp seasonal/summer.csv backup/summer.bck
 ```
 
-- Copy spring.csv and summer.csv from the segit asonal directory into the backup directory without changing your current working directory (/home/repl).
+2. Copy spring.csv and summer.csv from the segit asonal directory into the backup directory without changing your current working directory (/home/repl).
 
 ```
 cp/seasonal/spring.csv seasonal/summer.csv backup 
@@ -194,23 +196,27 @@ cat course.txt
 
 Use less seasonal/spring.csv seasonal/summer.csv to view those two files in that order. Press spacebar to page down, :n to go to the second file, and :q to quit.
 
-``` $ less seasonal/spring.csv seasonal/summer.csv ```
+``` 
+$ less seasonal/spring.csv seasonal/summer.csv 
+```
 
-``` :n ```
+``` 
+:n 
+```
 
-``` :q ```
+``` 
+:q 
+```
 
 ### How can I look at the start of a file?
 
 What does head do if there aren't 10 lines in the file? (To find out, use it to look at the top of people/agarwal.txt.)
-
-
 - [ ] Print an error message because the file is too short.
 - [x] Display as many lines as there are.
 - [ ] Display enough blank lines to bring the total to 10.
 
 ### How can I type less?
-*the power of pressing tab to autocomplete file/path.*
+*press tab to auto-complete file/path name.*
 
 1. Run head seasonal/autumn.csv without typing the full filename.
 
@@ -248,18 +254,18 @@ tail -n +7 seasonal/spring.csv
 
 ### How can I select columns from a file? 
 What command will select the first column (containing dates) from the file spring.csv?
--[ ] cut -d , -f 1 seasonal/spring.csv
--[ ] cut -d, -f1 seasonal/spring.csv
--[x] Either of the above.
--[ ] Neither of the above, because -f must come before -d.
+- [ ] cut -d , -f 1 seasonal/spring.csv
+- [ ] cut -d, -f1 seasonal/spring.csv
+- [x] Either of the above.
+- [ ] Neither of the above, because -f must come before -d.
 
 ### What can't cut do?
 What is the output of cut -d : -f 2-4 on the line:
 > first:second:third:
--[ ] second
--[ ] second:third
--[x] second:third:
--[ ] None of the above, because there aren't four fields.
+- [ ] second
+- [ ] second:third
+- [x] second:third:
+- [ ] None of the above, because there aren't four fields.
 
 ### How can I repeat commands?
 1. Run head summer.csv in your home directory (which should fail).
@@ -322,3 +328,37 @@ man paste
 - [ ] The column headers are repeated.
 - [x] The last few rows have the wrong number of columns.
 - [ ] Some of the data from winter.csv is missing.
+
+# Combining Tools
+
+### How can I store a command's output in a file?
+``` ```
+### How can I use a commands's output as an input?
+``` ```
+### What's a better way to combine commands? 
+``` ```
+
+### How can I combine many commands?
+``` ```
+### How can I count the records in a file? 
+``` ```
+### How can I specify many files at once? 
+``` ```
+### What other wildcards can I use?
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+### How can I sort lines of text?
+``` ```
+### How can I remove duplicate lines?
+``` ```
+### How can I save the output of a pipe?
+- [ ]
+- [ ]
+- [ ]
+### How can I stop a running program? 
+``` ```
+
+### Wrapping up? 
+``` ```
