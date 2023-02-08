@@ -319,6 +319,6 @@ Read the manual page for paste, and then run paste to combine the autumn and win
 ```
 man paste
 ```
--[ ] The column headers are repeated.
--[x] The last few rows have the wrong number of columns.
--[ ] Some of the data from winter.csv is missing.
+- [ ] The column headers are repeated.
+- [x] The last few rows have the wrong number of columns.
+- [ ] Some of the data from winter.csv is missing.
