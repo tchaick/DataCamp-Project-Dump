@@ -178,3 +178,8 @@ mkdir
 ```
 mv ~/people/agarwal.txt /tmp/scratch
 ```
+
+
+# Manipulating Data
+
+## 
