@@ -213,15 +213,88 @@ What does head do if there aren't 10 lines in the file? (To find out, use it to 
 *the power of pressing tab to autocomplete file/path.*
 
 1. Run head seasonal/autumn.csv without typing the full filename.
-``` type head sea, press tab, type au, press tab. ```
+
+``` 
+type head sea, press tab, type au, press tab. 
+```
+
 2. Run head seasonal/spring.csv without typing the full filename.
-``` type head sea, press tab, type sp, press tab. ```
+```
+type head sea, press tab, type sp, press tab.
+```
 
 ### How can I control what commands do?
+Display the first 5 lines of winter.csv in the seasonal directory.
+
+```
+head -n 5 seasonal/winter.csv
+```
+
 ### How can I list everything below a directory?
+To help you know what is what, ls has another flag -F that prints a / after the name of every directory and a * after the name of every runnable program. Run ls with the two flags, -R and -F, and the absolute path to your home directory to see everything it contains. (The order of the flags doesn't matter, but the directory name must come last.)
+
+```
+ls -R -F /home/repl
+```
 ### How can I get help for a command?
+1. Read the manual page for the tail command to find out what putting a + sign in front of the number used with the -n flag does. (Remember to press spacebar to page down and/or type q to quit.)
+``` 
+man tail 
+```
+2. Use tail with the flag -n +7 to display all but the first six lines of seasonal/spring.csv.
+```
+tail -n +7 seasonal/spring.csv
+```
+
 ### How can I select columns from a file? 
+What command will select the first column (containing dates) from the file spring.csv?
+-[ ] cut -d , -f 1 seasonal/spring.csv
+-[ ] cut -d, -f1 seasonal/spring.csv
+-[x] Either of the above.
+-[ ] Neither of the above, because -f must come before -d.
+
 ### What can't cut do?
+What is the output of cut -d : -f 2-4 on the line:
+> first:second:third:
+-[ ] second
+-[ ] second:third
+-[x] second:third:
+-[ ] None of the above, because there aren't four fields.
+
 ### How can I repeat commands?
+1. Run head summer.csv in your home directory (which should fail).
+```
+head summer.csv
+```
+2. Change directory to seasonal.
+```
+cd seasonal
+```
+3. Re-run the head command with !head.
+```
+!head
+```
+4. Use history to look at what you have done.
+```
+history
+```
+5. Re-run head again using ! followed by a command number.
+```
+!1
+```
+
 ### How can I select lines containing specific values?
+**Good to know!**
+
+```head``` and ```tail``` select rows, ```cut``` selects columns, and ```grep``` selects lines according to what they contain. In its simplest form, ```grep``` takes a piece of text followed by one or more filenames and prints all of the lines in those files that contain that text. For example, ```grep bicuspid seasonal/winter.csv``` prints lines from ```winter.csv``` that contain "bicuspid".
+
+```grep``` can search for patterns as well; we will explore those in the next course. What's more important right now is some of grep's more common flags:
+
+```-c```: print a count of matching lines rather than the lines themselves
+```-h```: do not print the names of files when searching multiple files
+```-i```: ignore case (e.g., treat "Regression" and "regression" as matches)
+```-l```: print the names of files that contain matches, not the matches
+```-n```: print line numbers for matching lines
+```-v```: invert the match, i.e., only show lines that don't match
+
 ### Why isn't always safe tp treat data as text?
