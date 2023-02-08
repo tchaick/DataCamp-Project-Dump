@@ -297,4 +297,28 @@ history
 - ```-n```: print line numbers for matching lines
 - ```-v```: invert the match, i.e., only show lines that don't match
 
-### Why isn't always safe tp treat data as text?
+1. Print the contents of all of the lines containing the word molar in seasonal/autumn.csv by running a single command while in your home directory. Don't use any flags.
+
+```
+grep molar seasonal/autumn.csv
+```
+
+2. Invert the match to find all of the lines that don't contain the word molar in seasonal/spring.csv, and show their line numbers. Remember, it's considered good style to put all of the flags before other values like filenames or the search term "molar".
+```
+grep -v -n seasonal/spring.csv
+```
+
+3. Count how many lines contain the word incisor in autumn.csv and winter.csv combined. (Again, run a single command from your home directory.)
+```
+grep -c incisor seasonal/autumn.csv seasonal/winter.csv 
+```
+
+### Why isn't always safe to treat data as text?
+
+Read the manual page for paste, and then run paste to combine the autumn and winter data files in a single table using a comma as a separator. What's wrong with the output from a data analysis point of view?
+```
+man paste
+```
+-[ ] The column headers are repeated.
+-[x] The last few rows have the wrong number of columns.
+-[ ] Some of the data from winter.csv is missing.
