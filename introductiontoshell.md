@@ -3,6 +3,8 @@
 Retook the course as a refresher this February 6, 2023 | Completed: February 9, 2023
 My notes and solutions below. 
 
+---
+
 # Manipulating files and directories
 
 ### How does the shell compare to a desktop interface
@@ -13,14 +15,17 @@ What is the relationship between the graphical file explorer that most people us
 - [ ] The file explorer is built on top of the shell.
 - [ ] The shell is part of the operating system, while the file explorer is separate.
 - [x] They are both interfaces for issuing commands to the operating system.
----
+
+
 ### Where am I
+
 Run ```pwd```. Where are you right now?
 
 - [ ] /home
 - [ ] /repl
 - [x] /home/repl
----
+
+
 ### How can I identify files and directories
 
 Use ls with an appropriate argument to list the files in the directory /home/repl/seasonal (which holds information on dental surgeries by date, broken down by season). Which of these files is not in that directory?
@@ -32,6 +37,7 @@ ls /home/repl/seasonal
 - [ ] fall.csv
 - [x] spring.csv
 - [ ] winter.csv
+
 
 ### How else can I identify files and directories
 
@@ -55,7 +61,9 @@ The shell decides if a path is absolute or relative by looking at its first char
     ls people
     ```
 
+
 ### How can I move to another directory
+
 1. You are in /home/repl/. Change directory to /home/repl/seasonal using a relative path.
     ```
     cd seasonal
@@ -72,6 +80,7 @@ The shell decides if a path is absolute or relative by looking at its first char
     ls
     ```
 
+
 ### How can I move up a directory
 
 If you are in /home/repl/seasonal, where does cd ~/../. take you?
@@ -80,7 +89,9 @@ If you are in /home/repl/seasonal, where does cd ~/../. take you?
 - [x] /home/repl/seasonal
 - [ ] / (the root directly)
 
+
 ### How can I copy files
+
 1. Make a copy of seasonal/summer.csv in the backup directory (which is also in /home/repl), calling the new file summer.bck.
 
 ```
@@ -95,6 +106,7 @@ cp/seasonal/spring.csv seasonal/summer.csv backup
 
 
 ### How can I move a file
+
 You are in /home/repl, which has sub-directories seasonal and backup. Using a single command, move spring.csv and summer.csv from seasonal to backup.
 
 ```
@@ -119,7 +131,9 @@ mv winter.csv winter.csv.bck
 ls
 ```
 
+
 ### How can I delete files
+
 1. You are in /home/repl. Go into the seasonal directory.
     ```
     cd seasonal
@@ -137,7 +151,9 @@ ls
     rm seasonal/summer.csv
     ```
 
+
 ### How can I create and delete directories?
+
 1. Without changing directories, delete the file agarwal.txt in the people directory.
 ```
 rm people/agarwal.txt
@@ -159,8 +175,8 @@ mkdir yearly/2017
 ```
 
 
-
 ### Wrapping up
+
 1. Use cd to go into /tmp.
 ```
 cd /tmp
@@ -182,22 +198,28 @@ mv ~/people/agarwal.txt /tmp/scratch
 ```
 
 
+---
+
 # Manipulating Data
 
+
 ### How can I view a file's contents?
+
 Print the contents of course.txt to the screen
 
 ``` 
 cat course.txt
 ```
 
+
 ### How can I view a file's contens piece by piece?
+
 **Good to know!** *less > display one page of the file at a time, :n > move to the next file. :p > to go back to previous one, :q > quit.*
 
 Use less seasonal/spring.csv seasonal/summer.csv to view those two files in that order. Press spacebar to page down, :n to go to the second file, and :q to quit.
 
 ``` 
-$ less seasonal/spring.csv seasonal/summer.csv 
+less seasonal/spring.csv seasonal/summer.csv 
 ```
 
 ``` 
@@ -208,6 +230,7 @@ $ less seasonal/spring.csv seasonal/summer.csv
 :q 
 ```
 
+
 ### How can I look at the start of a file?
 
 What does head do if there aren't 10 lines in the file? (To find out, use it to look at the top of people/agarwal.txt.)
@@ -216,6 +239,7 @@ What does head do if there aren't 10 lines in the file? (To find out, use it to 
 - [ ] Display enough blank lines to bring the total to 10.
 
 ### How can I type less?
+
 *press tab to auto-complete file/path name.*
 
 1. Run head seasonal/autumn.csv without typing the full filename.
@@ -229,20 +253,27 @@ type head sea, press tab, type au, press tab.
 type head sea, press tab, type sp, press tab.
 ```
 
+
 ### How can I control what commands do?
+
 Display the first 5 lines of winter.csv in the seasonal directory.
 
 ```
 head -n 5 seasonal/winter.csv
 ```
 
+
 ### How can I list everything below a directory?
+
 To help you know what is what, ls has another flag -F that prints a / after the name of every directory and a * after the name of every runnable program. Run ls with the two flags, -R and -F, and the absolute path to your home directory to see everything it contains. (The order of the flags doesn't matter, but the directory name must come last.)
 
 ```
 ls -R -F /home/repl
 ```
+
+
 ### How can I get help for a command?
+
 1. Read the manual page for the tail command to find out what putting a + sign in front of the number used with the -n flag does. (Remember to press spacebar to page down and/or type q to quit.)
 ``` 
 man tail 
@@ -252,14 +283,18 @@ man tail
 tail -n +7 seasonal/spring.csv
 ```
 
+
 ### How can I select columns from a file? 
+
 What command will select the first column (containing dates) from the file spring.csv?
 - [ ] cut -d , -f 1 seasonal/spring.csv
 - [ ] cut -d, -f1 seasonal/spring.csv
 - [x] Either of the above.
 - [ ] Neither of the above, because -f must come before -d.
 
+
 ### What can't cut do?
+
 What is the output of cut -d : -f 2-4 on the line:
 > first:second:third:
 - [ ] second
@@ -267,7 +302,9 @@ What is the output of cut -d : -f 2-4 on the line:
 - [x] second:third:
 - [ ] None of the above, because there aren't four fields.
 
+
 ### How can I repeat commands?
+
 1. Run head summer.csv in your home directory (which should fail).
 ```
 head summer.csv
@@ -289,7 +326,9 @@ history
 !1
 ```
 
+
 ### How can I select lines containing specific values?
+
 **Good to know!**
 
 ```head``` and ```tail``` select rows, ```cut``` selects columns, and ```grep``` selects lines according to what they contain. In its simplest form, ```grep``` takes a piece of text followed by one or more filenames and prints all of the lines in those files that contain that text. For example, ```grep bicuspid seasonal/winter.csv``` prints lines from ```winter.csv``` that contain "bicuspid".
@@ -319,6 +358,7 @@ grep -v -n seasonal/spring.csv
 grep -c incisor seasonal/autumn.csv seasonal/winter.csv 
 ```
 
+
 ### Why isn't always safe to treat data as text?
 
 Read the manual page for paste, and then run paste to combine the autumn and winter data files in a single table using a comma as a separator. What's wrong with the output from a data analysis point of view?
@@ -329,16 +369,58 @@ man paste
 - [x] The last few rows have the wrong number of columns.
 - [ ] Some of the data from winter.csv is missing.
 
+
+
+---
+
 # Combining Tools
 
+
 ### How can I store a command's output in a file?
-``` ```
+
+Combine tail with redirection to save the last 5 lines of seasonal/winter.csv in a file called last.csv.
+``` 
+tail -n 5 seasonal/winter.csv > last.csv
+```
+
+
 ### How can I use a commands's output as an input?
-``` ```
-### What's a better way to combine commands? 
-``` ```
+
+1. Select the last two lines from seasonal/winter.csv and save them in a file called bottom.csv.
+```
+tail -n 2 seasonal/winter.csv > bottom.csv
+```
+2. Select the first line from bottom.csv in order to get the second-to-last line of the original file.
+```
+head -n 1 bottom.csv
+```
+### What's a better way to combine commands?
+
+Use cut to select all of the tooth names from column 2 of the comma delimited file seasonal/summer.csv, then pipe the result to grep, with an inverted match, to exclude the header line containing the word "Tooth". cut and grep were covered in detail in Chapter 2, exercises 8 and 11 respectively.
+``` 
+cut -d , -f 2 seasonal/summer.csv | grep -v Tooth
+```
+
 
 ### How can I combine many commands?
+
+**Good to know!**
+You can chain any number of commands together. For example, this command:
+
+> cut -d , -f 1 seasonal/spring.csv | grep -v Date | head -n 10
+
+will:
+
+1. select the first column from the spring data;
+2. remove the header line containing the word "Date"; and
+3. select the first 10 lines of actual data.
+
+In the previous exercise, you used the following command to select all the tooth names from column 2 of seasonal/summer.csv:
+
+> cut -d , -f 2 seasonal/summer.csv | grep -v Tooth
+
+Extend this pipeline with a head command to only select the very first tooth name.
+
 ``` ```
 ### How can I count the records in a file? 
 ``` ```
