@@ -404,6 +404,7 @@ cut -d , -f 2 seasonal/summer.csv | grep -v Tooth
 
 ### How can I combine many commands?
 
+---
 **Good to know!**
 You can chain any number of commands together. For example, this command:
 
@@ -415,32 +416,123 @@ will:
 2. remove the header line containing the word "Date"; and
 3. select the first 10 lines of actual data.
 
+---
+
 In the previous exercise, you used the following command to select all the tooth names from column 2 of seasonal/summer.csv:
 
 > cut -d , -f 2 seasonal/summer.csv | grep -v Tooth
 
 Extend this pipeline with a head command to only select the very first tooth name.
 
-``` ```
-### How can I count the records in a file? 
-``` ```
-### How can I specify many files at once? 
-``` ```
-### What other wildcards can I use?
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-### How can I sort lines of text?
-``` ```
-### How can I remove duplicate lines?
-``` ```
-### How can I save the output of a pipe?
-- [ ]
-- [ ]
-- [ ]
-### How can I stop a running program? 
-``` ```
+``` 
+cut -d , -f 2 seasonal/summer.csv | grep -v Tooth | head -n 1
+```
+### How can I count the records in a file?
+Count how many records in seasonal/spring.csv have dates in July 2017 (2017-07).
 
-### Wrapping up? 
-``` ```
+To do this, use grep with a partial date to select the lines and pipe this result into wc with an appropriate flag to count the lines.
+
+```
+grep "2017-01" seasonal/spring.csv |wc -l-l 
+```
+### How can I specify many files at once? 
+Write a single command using head to get the first three lines from both seasonal/spring.csv and seasonal/summer.csv, a total of six lines of data, but not from the autumn or winter data files. Use a wildcard instead of spelling out the files' names in full.
+
+```
+head -n 3 seasonal/s*
+```
+### What other wildcards can I use?
+>**Good to know!**
+>
+> ? matches a single character, 
+>> so 201?.txt will match 2017.txt or 2018.txt, but not 2017-01.txt.
+> 
+> [...] matches any one of the characters inside the square brackets, 
+>> so 201[78].txt matches 2017.txt or 2018.txt, but not 2016.txt.
+>
+> {...} matches any of the comma-separated patterns inside the curly brackets, 
+>> so {*.txt, *.csv} matches any file whose name ends with .txt or .csv, but not files whose names end with .pdf.
+
+Which expression would match singh.pdf and johel.txt but not sandhu.pdf or sandhu.txt?
+
+- [ ] [sj]*.{.pdf, .txt}
+- [ ] {s*.pdf, j*.txt}
+- [ ] [singh,johel]{*.pdf, *.txt}
+- [x] {singh.pdf, j*.txt}
+
+### How can I sort lines of text?
+
+>**Good to know!**
+> use ```-b``` to ignore leading blanks and
+>
+> use ```-f``` for case sensitive query.
+
+Remember the combination of cut and grep to select all the tooth names from column 2 of seasonal/summer.csv?
+
+> cut -d , -f 2 seasonal/summer.csv | grep -v Tooth
+
+Starting from this recipe, sort the names of the teeth in seasonal/winter.csv (not summer.csv) in descending alphabetical order. To do this, extend the pipeline with a sort step.
+
+``` 
+cut -d , -f 2 seasonal/winter.csv | grep -v Tooth | sort -r
+```
+
+### How can I remove duplicate lines?
+**Good to know!**
+> use ```uniq``` to remove duplicated lines
+
+Write a pipeline to:
+
+- get the second column from seasonal/winter.csv,
+- remove the word "Tooth" from the output so that only tooth names are displayed,
+- sort the output so that all occurrences of a particular tooth name are adjacent; and
+- display each tooth name once along with a count of how often it occurs.
+The start of your pipeline is the same as the previous exercise:
+
+> cut -d , -f 2 seasonal/winter.csv | grep -v Tooth
+
+Extend it with a sort command, and use uniq -c to display unique lines with a count of how often each occurs rather than using uniq and wc.
+
+```
+cut -d , -f 2 seasonal/winter.csv | grep -v Tooth | sort | uniq -c
+```
+
+
+### How can I save the output of a pipe?
+
+What happens if we put redirection at the front of a pipeline as in:
+> > result.txt head -n 3 seasonal/winter.csv
+
+- [x] The command's output is redirected to the file as usual.
+- [ ] The shell reports it as an error.
+- [ ] The shell waits for input forever.
+
+
+### How can I stop a running program?
+
+Run the command:
+
+```head```
+
+with no arguments (so that it waits for input that will never come) and then stop it by typing Ctrl + C.
+
+``` 
+press Ctrl + C
+```
+
+### Wrapping up?
+To wrap up, you will build a pipeline to find out how many records are in the shortest of the seasonal data files.
+
+1. Use wc with appropriate parameters to list the number of lines in all of the seasonal data files. (Use a wildcard for the filenames instead of typing them all in by hand.)
+```
+wc -l seasonal/*
+```
+
+2. Add another command to the previous one using a pipe to remove the line containing the word "total".
+```
+wc -l seasonal/* | grep -v total
+```
+3. Add two more stages to the pipeline that use sort -n and head -n 1 to find the file containing the fewest lines.
+```
+wc -l seasonal/* | grep -v total | sort -n | head -n 1
+```
