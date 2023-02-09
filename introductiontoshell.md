@@ -394,6 +394,8 @@ tail -n 2 seasonal/winter.csv > bottom.csv
 ```
 head -n 1 bottom.csv
 ```
+
+
 ### What's a better way to combine commands?
 
 Use cut to select all of the tooth names from column 2 of the comma delimited file seasonal/summer.csv, then pipe the result to grep, with an inverted match, to exclude the header line containing the word "Tooth". cut and grep were covered in detail in Chapter 2, exercises 8 and 11 respectively.
@@ -404,7 +406,7 @@ cut -d , -f 2 seasonal/summer.csv | grep -v Tooth
 
 ### How can I combine many commands?
 
----
+
 **Good to know!**
 You can chain any number of commands together. For example, this command:
 
@@ -416,7 +418,7 @@ will:
 2. remove the header line containing the word "Date"; and
 3. select the first 10 lines of actual data.
 
----
+
 
 In the previous exercise, you used the following command to select all the tooth names from column 2 of seasonal/summer.csv:
 
@@ -427,7 +429,10 @@ Extend this pipeline with a head command to only select the very first tooth nam
 ``` 
 cut -d , -f 2 seasonal/summer.csv | grep -v Tooth | head -n 1
 ```
+
+
 ### How can I count the records in a file?
+
 Count how many records in seasonal/spring.csv have dates in July 2017 (2017-07).
 
 To do this, use grep with a partial date to select the lines and pipe this result into wc with an appropriate flag to count the lines.
@@ -435,13 +440,19 @@ To do this, use grep with a partial date to select the lines and pipe this resul
 ```
 grep "2017-01" seasonal/spring.csv |wc -l-l 
 ```
+
+
 ### How can I specify many files at once? 
+
 Write a single command using head to get the first three lines from both seasonal/spring.csv and seasonal/summer.csv, a total of six lines of data, but not from the autumn or winter data files. Use a wildcard instead of spelling out the files' names in full.
 
 ```
 head -n 3 seasonal/s*
 ```
+
+
 ### What other wildcards can I use?
+
 >**Good to know!**
 >
 > ? matches a single character, 
@@ -462,7 +473,8 @@ Which expression would match singh.pdf and johel.txt but not sandhu.pdf or sandh
 
 ### How can I sort lines of text?
 
->**Good to know!**
+**Good to know!**
+
 > use ```-b``` to ignore leading blanks and
 >
 > use ```-f``` for case sensitive query.
@@ -478,6 +490,7 @@ cut -d , -f 2 seasonal/winter.csv | grep -v Tooth | sort -r
 ```
 
 ### How can I remove duplicate lines?
+
 **Good to know!**
 > use ```uniq``` to remove duplicated lines
 
@@ -532,7 +545,11 @@ wc -l seasonal/*
 ```
 wc -l seasonal/* | grep -v total
 ```
+
 3. Add two more stages to the pipeline that use sort -n and head -n 1 to find the file containing the fewest lines.
 ```
 wc -l seasonal/* | grep -v total | sort -n | head -n 1
 ```
+
+
+---
