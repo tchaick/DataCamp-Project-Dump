@@ -556,11 +556,68 @@ wc -l seasonal/* | grep -v total | sort -n | head -n 1
 
 
 ### How does the shell store information?
+
+use set and grep with a pipe to display the value of HISTFILESIZE, which determines how many old commands are stored in your command history. What is its value?
+
+```
+set | grep HISTFILESIZE
+```
+
+- [ ] 10
+- [ ] 500
+- [x] 2000
+- [ ] The variable is not there.
+
+
 ### How can I print a vaiable's value?
-### How else does the shell store information? 
+
+The variable OSTYPE holds the name of the kind of operating system you are using. Display its value using echo.
+
+```
+echo $OSTYPE
+```
+
+
+### How else does the shell store information?
+
+1. Define a variable called testing with the value seasonal/winter.csv.
+
+```
+testing=seasonal/winter.csv
+```
+
+2. Use head -n 1 SOMETHING to get the first line from seasonal/winter.csv using the value of the variable testing instead of the name of the file.
+```
+head -n 1 $testing 
+```
+
+
 ### How can I repeat a command many times?
+
+Modify the loop so that it prints:
+
+docx
+odt
+pdf
+Please use filetype as the name of the loop variable.
+
+```
+for filetype in docx odt pdf; do echo $filetype; done
+```
+
+
 ### How can I record the names of a set of files?
+
+Modify the wildcard expression to people/* so that the loop prints the names of the files in the people directory regardless of what suffix they do or don't have. Please use filename as the name of your loop variable.
+
+``` 
+for filename in people/*; do echo $filename; done
+```
+
+
 ### A variable's name versus its value
+
+
 ### How can I run many commands in a single loop? 
 ### Why shouldn't I use spaces in filenames?
 ### How can I do many things in a single loop?
