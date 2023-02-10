@@ -569,7 +569,9 @@ set | grep HISTFILESIZE
 - [ ] The variable is not there.
 
 
-### How can I print a vaiable's value?
+### How can I print a variable's value?
+
+*The $ symbol is used to access the value of a shell variable.*
 
 The variable OSTYPE holds the name of the kind of operating system you are using. Display its value using echo.
 
@@ -594,6 +596,18 @@ head -n 1 $testing
 
 ### How can I repeat a command many times?
 
+**Good to know!**
+The `for` loop in bash is used to execute a set of commands repeatedly for a specified number of times, or `for` each item in a specified list. Here's the basic syntax for a for loop in bash:
+
+```
+for variable in list; do
+  commands
+done
+```
+- variable is a variable that will be used to store each item in the list as the loop iterates.
+- list is a list of values or items that the loop will iterate over. This can be a list of words, a range of numbers, or the output of a command.
+- commands are the commands that will be executed for each iteration of the loop. These commands will be executed once for each item in the list.
+
 Modify the loop so that it prints:
 
 docx
@@ -605,8 +619,8 @@ Please use filetype as the name of the loop variable.
 for filetype in docx odt pdf; do echo $filetype; done
 ```
 
+### How can I repeat a command once for each file?
 
-### How can I record the names of a set of files?
 
 Modify the wildcard expression to people/* so that the loop prints the names of the files in the people directory regardless of what suffix they do or don't have. Please use filename as the name of your loop variable.
 
@@ -615,11 +629,71 @@ for filename in people/*; do echo $filename; done
 ```
 
 
+### How can I record the names of a set of files?
+
+
+If you run these two commands in your home directory, how many lines of output will they print?
+```
+files=seasonal/*.csv
+for f in $files; do echo $f; done
+```
+
+- [ ] None: since files is defined on a separate line, it has no value in the second line.
+- [ ] One: the word "files".
+- [x] Four: the names of all four seasonal data files.
+
+
 ### A variable's name versus its value
 
+*The $ symbol is used to access the value of a shell variable.*
+
+If you were to run these two commands in your home directory, what output would be printed?
+```
+files=seasonal/*.csv
+for f in files; do echo $f; done
+```
+- [x] One line: the word "files"
+- [ ] Four lines: the names of all four seasonal data files.
+- [ ] Four blank lines: the variable f isn't assigned a value.
 
 ### How can I run many commands in a single loop? 
+
+Write a loop that prints the last entry from July 2017 (2017-07) in every seasonal file. It should produce a similar output to:
+
+> grep 2017-07 seasonal/winter.csv | tail -n 1
+
+but for each seasonal file separately. Please use file as the name of the loop variable, and remember to loop through the list of files seasonal/*.csv (instead of 'seasonal/winter.csv' as in the example).
+
+```
+for file in seasonal/*.csv; do grep 2017-07 $file | tail -n 1; done
+```
+
 ### Why shouldn't I use spaces in filenames?
+
+If you have two files called current.csv and last year.csv (with a space in its name) and you type:
+
+> rm current.csv last year.csv
+
+what will happen:
+
+- [ ] The shell will print an error message because last and year.csv do not exist.
+- [ ] The shell will delete current.csv.
+- [x] Both of the above.
+- [ ] Nothing.
+
 ### How can I do many things in a single loop?
+
+Suppose you forget the semi-colon between the echo and head commands in the previous loop, so that you ask the shell to run:
+
+> for f in seasonal/*.csv; do echo $f head -n 2 $f | tail -n 1; done
+
+What will the shell do?
+
+
+- [ ] Print an error message.
+- [x] Print one line for each of the four files.
+- [ ] Print one line for autumn.csv (the first file).
+- [ ] Print the last line of each file.
+
 
 
