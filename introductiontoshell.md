@@ -376,6 +376,7 @@ man paste
 # Combining Tools
 
 
+
 ### How can I store a command's output in a file?
 
 Combine tail with redirection to save the last 5 lines of seasonal/winter.csv in a file called last.csv.
@@ -406,7 +407,6 @@ cut -d , -f 2 seasonal/summer.csv | grep -v Tooth
 
 ### How can I combine many commands?
 
-
 **Good to know!**
 You can chain any number of commands together. For example, this command:
 
@@ -417,7 +417,6 @@ will:
 1. select the first column from the spring data;
 2. remove the header line containing the word "Date"; and
 3. select the first 10 lines of actual data.
-
 
 
 In the previous exercise, you used the following command to select all the tooth names from column 2 of seasonal/summer.csv:
@@ -552,4 +551,18 @@ wc -l seasonal/* | grep -v total | sort -n | head -n 1
 ```
 
 
----
+# Batch Processing
+
+
+
+### How does the shell store information?
+### How can I print a vaiable's value?
+### How else does the shell store information? 
+### How can I repeat a command many times?
+### How can I record the names of a set of files?
+### A variable's name versus its value
+### How can I run many commands in a single loop? 
+### Why shouldn't I use spaces in filenames?
+### How can I do many things in a single loop?
+
+
