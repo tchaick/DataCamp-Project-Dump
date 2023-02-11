@@ -702,6 +702,9 @@ What will the shell do?
 
 # Creating new tools
 
+
+### How can I edit a file? 
+
 **Good to know!** 
 
 > Move around *Nano* using these control-key combinations. 
@@ -736,7 +739,9 @@ ctrl + x
 ```
 
 
-### How can I edit a file? 
+### How can I record what I just did? 
+
+
 1. Copy the files seasonal/spring.csv and seasonal/summer.csv to your home directory.
 
 ```
@@ -751,10 +756,55 @@ grep -h -v Tooth spring.csv summer.csv > temp.csv
 3. Pipe history into tail -n 3 and redirect the output to steps.txt to save the last three commands in a file. (You need to save three instead of just two because the history command itself will be in the list.)
 ```
 history tail -n 3 > steps.txt
+```
 
-### How can I record what I just did? 
+
 ### How can I save commands to re-run later?
+
+1. Use nano dates.sh to create a file called dates.sh that contains this command:
+
+cut -d , -f 1 seasonal/*.csv
+to extract the first column from all of the CSV files in seasonal.
+
+``` 
+nano dates.sh
+```
+
+```
+cut -d , -f 1 seasonal/*.csv
+ctrl + o enter
+ctrl + x 
+```
+
+2. Use bash to run the file dates.sh
+
+```
+bash dates.sh
+```
+
 ### How can I re-use pipes?
+
+1. A file teeth.sh in your home directory has been prepared for you, but contains some blanks. Use Nano to edit the file and replace the two ____ placeholders with seasonal/*.csv and -c so that this script prints a count of the number of times each tooth name appears in the CSV files in the seasonal directory.
+
+
+```
+nano teeth.sh
+1st ___ > seasonal/*.csv, 2nd ___ > -c
+ctrl + o, enter
+cntrl + x
+```
+
+2. Use bash to run teeth.sh and > to redirect its output to teeth.out.
+```
+bash teeth.sh > teeth.out
+```
+
+3. Run cat teeth.out to inspect your results.
+```
+cat teeth.out
+```
+
+
 ### How can I pass filenames to scripts?
 ### How can I process a single argument?
 ### How can one shell script do many things?
