@@ -702,8 +702,56 @@ What will the shell do?
 
 # Creating new tools
 
+**Good to know!** 
+
+> Move around *Nano* using these control-key combinations. 
+>
+>> - Ctrl + K: delete a line.
+>> - Ctrl + U: un-delete a line.
+>> - Ctrl + O: save the file ('O' stands for 'output'). *You will also need to press Enter to confirm the filename!*
+>> -Ctrl + X: exit the editor.
+
+
+Run nano names.txt to edit a new file in your home directory and enter the following four lines:
+
+Lovelace
+Hopper
+Johnson
+Wilson
+To save what you have written, type Ctrl + O to write the file out, then Enter to confirm the filename, then Ctrl + X to exit the editor.
+
+```
+nano names.txt
+```
+
+```
+Lovelace
+Hopper
+Johnson
+Wilson
+```
+```
+ctrl + O
+ctrl + x
+```
+
 
 ### How can I edit a file? 
+1. Copy the files seasonal/spring.csv and seasonal/summer.csv to your home directory.
+
+```
+cp seasonal/*s ~
+```
+
+2. Use grep with the -h flag (to stop it from printing filenames) and -v Tooth (to select lines that don't match the header line) to select the data records from spring.csv and summer.csv in that order and redirect the output to temp.csv.
+```
+grep -h -v Tooth spring.csv summer.csv > temp.csv
+```
+
+3. Pipe history into tail -n 3 and redirect the output to steps.txt to save the last three commands in a file. (You need to save three instead of just two because the history command itself will be in the list.)
+```
+history tail -n 3 > steps.txt
+
 ### How can I record what I just did? 
 ### How can I save commands to re-run later?
 ### How can I re-use pipes?
