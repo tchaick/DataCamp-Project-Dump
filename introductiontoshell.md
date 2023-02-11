@@ -656,6 +656,7 @@ for f in files; do echo $f; done
 - [ ] Four lines: the names of all four seasonal data files.
 - [ ] Four blank lines: the variable f isn't assigned a value.
 
+
 ### How can I run many commands in a single loop? 
 
 Write a loop that prints the last entry from July 2017 (2017-07) in every seasonal file. It should produce a similar output to:
@@ -681,6 +682,7 @@ what will happen:
 - [x] Both of the above.
 - [ ] Nothing.
 
+
 ### How can I do many things in a single loop?
 
 Suppose you forget the semi-colon between the echo and head commands in the previous loop, so that you ask the shell to run:
@@ -695,5 +697,20 @@ What will the shell do?
 - [ ] Print one line for autumn.csv (the first file).
 - [ ] Print the last line of each file.
 
+
+
+
+# Creating new tools
+
+
+### How can I edit a file? 
+### How can I record what I just did? 
+### How can I save commands to re-run later?
+### How can I re-use pipes?
+### How can I pass filenames to scripts?
+### How can I process a single argument?
+### How can one shell script do many things?
+### How can I write loops in a shell script?
+### What happnees when I don't provide filenames?
 
 
