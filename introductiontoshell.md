@@ -819,7 +819,10 @@ cat teeth.out
 nano count-records.sh
 ```
 
-> tail -q -n +2 `$@` | wc `-l`
+> tail -q -n +2 `$@` | wc `-l` // counts the number of lines in a set of files
+> - starting from the second line (-n +2)
+> - suppressing the display of filenames (-q)
+> - wc -l, count the number of lines, not words or characters. 
 
 ```
 ctrl + o, enter
@@ -831,7 +834,78 @@ ctrl + x
 bash count-records.sh seasonal/*.csv > num-records.out
 
 ### How can I process a single argument?
+
+The script get-field.sh is supposed to take a filename, the number of the row to select, the number of the column to select, and print just that field from a CSV file. For example:
+
+> bash get-field.sh seasonal/summer.csv 4 2
+
+should select the second field from line 4 of seasonal/summer.csv. Which of the following commands should be put in get-field.sh to do that?
+- [ ] head -n $1 $2 | tail -n 1 | cut -d , -f $3
+- [x] head -n $2 $1 | tail -n 1 | cut -d , -f $3
+- [ ] head -n $3 $1 | tail -n 1 | cut -d , -f $2
+- [ ] head -n $2 $3 | tail -n 1 | cut -d , -f $1
+
+Here's what the command does, step by step:
+
+1. head -n $1 $2: This extracts the first $1 lines from the file specified by $2.
+2. tail -n 1: This extracts the last line from the output of the previous step.
+3. cut -d , -f $3: This extracts the $3-th field from the last line, using a comma (,) as the delimiter.
+
+So, if you run this command as head -n 4 seasonal/summer.csv | tail -n 1 | cut -d , -f 2, it would extract the second field from line 4 of the seasonal/summer.csv file.
+
+
+
+
+
 ### How can one shell script do many things?
+
+
+1. Use Nano to edit the script range.sh and replace the two ____ placeholders with $@ and -v so that it lists the names and number of lines in all of the files given on the command line without showing the total number of lines in all files. (Do not try to subtract the column header lines from the files.)
+
+```
+nano range.sh
+```
+
+> wc -l `$@` | grep `-v` total
+
+*The wc -l command counts the number of lines in one or more files specified as arguments in $@*
+*grep -v filters the output of the previous command, removing lines that contain the word "total"*
+```
+ctrl + o, enter
+ctrl + x
+```
+
+2. Use Nano again to add sort -n and head -n 1 in that order to the pipeline in range.sh to display the name and line count of the shortest file given to it.
+
+```
+nano range.sh
+```
+
+> wc -l `$@` | grep `-v` total | sort -n | head -n 1
+```
+ctrl + o, enter
+ctrl + x
+```
+
+3. Again using Nano, add a second line to range.sh to print the name and record count of the longest file in the directory as well as the shortest. This line should be a duplicate of the one you have already written, but with sort -n -r rather than sort -n.
+
+```
+nano range.sh
+```
+> > wc -l `$@` | grep `-v` total | sort -n -r 
+
+```
+ctrl + o, enter
+ctrl + x
+```
+
+4. Run the script on the files in the seasonal directory using seasonal/*.csv to match all of the files and redirect the output using > to a file called range.out in your home directory.
+
+```
+bash range.sh seasonal/*.csv > range.out
+```
+
+
 ### How can I write loops in a shell script?
 ### What happnees when I don't provide filenames?
 
