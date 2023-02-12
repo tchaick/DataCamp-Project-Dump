@@ -1,6 +1,6 @@
 # Introduction to Shell
 
-Retook the course as a refresher this February 6, 2023 | Completed: February 9, 2023
+Retook the course as a refresher this February 6, 2023 | Completed: February 12, 2023
 My notes and solutions below. 
 
 ---
@@ -892,7 +892,7 @@ ctrl + x
 ```
 nano range.sh
 ```
-> > wc -l `$@` | grep `-v` total | sort -n -r 
+> wc -l `$@` | grep `-v` total | sort -n -r 
 
 ```
 ctrl + o, enter
@@ -905,8 +905,34 @@ ctrl + x
 bash range.sh seasonal/*.csv > range.out
 ```
 
-
 ### How can I write loops in a shell script?
-### What happnees when I don't provide filenames?
 
+1. Fill in the placeholders in the script date-range.sh with $filename (twice), head, and tail so that it prints the first and last date from one or more files.
+
+```
+cut -d -f 1 $filename | grep -v Date | sort | head -n 1
+cut -d -f 1 $filename | grep -v Date | sort | tail -n 1
+```
+
+2. Run date-range.sh on all four of the seasonal data files using seasonal/*.csv to match their names.
+
+```
+bash date-range.sh seasonal/*.csv
+```
+
+3. Run date-range.sh on all four of the seasonal data files using seasonal/*.csv to match their names, and pipe its output to sort to see that your scripts can be used just like Unix's built-in commands.
+
+```
+bash date-range.sh seasonal/*.csv | sort
+```
+
+### What happens when I don't provide filenames?
+
+Suppose you do accidentally type:
+> head -n 5 | tail -n 3 somefile.txt
+What should you do next?
+
+- [ ] Wait 10 seconds for head to time out.
+- [ ] Type somefile.txt and press Enter to give head some input.
+- [x] Use Ctrl + C to stop the running head program.
 
