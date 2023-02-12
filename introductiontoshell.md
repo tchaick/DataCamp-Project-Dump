@@ -709,10 +709,10 @@ What will the shell do?
 
 > Move around *Nano* using these control-key combinations. 
 >
->> - Ctrl + K: delete a line.
->> - Ctrl + U: un-delete a line.
->> - Ctrl + O: save the file ('O' stands for 'output'). *You will also need to press Enter to confirm the filename!*
->> -Ctrl + X: exit the editor.
+> - Ctrl + K: delete a line.
+> - Ctrl + U: un-delete a line.
+> - Ctrl + O: save the file ('O' stands for 'output'). *You will also need to press Enter to confirm the filename!*
+> - Ctrl + X: exit the editor.
 
 
 Run nano names.txt to edit a new file in your home directory and enter the following four lines:
@@ -772,7 +772,7 @@ nano dates.sh
 
 ```
 cut -d , -f 1 seasonal/*.csv
-ctrl + o enter
+ctrl + o, enter
 ctrl + x 
 ```
 
@@ -791,7 +791,7 @@ bash dates.sh
 nano teeth.sh
 1st ___ > seasonal/*.csv, 2nd ___ > -c
 ctrl + o, enter
-cntrl + x
+ctrl + x
 ```
 
 2. Use bash to run teeth.sh and > to redirect its output to teeth.out.
@@ -806,6 +806,30 @@ cat teeth.out
 
 
 ### How can I pass filenames to scripts?
+
+*In Bash, you can pass filenames to a script as arguments. When you run a script, you can specify any number of arguments after the script name, separated by spaces. These arguments can then be accessed within the script using special variables.*
+
+> - The first argument passed to the script is stored in the variable say, '$1', then next , '$2', and so on '$_' 
+> - The number of argument passed to the script can be obtained using, `$#`.
+> - All of the arguments can be obtained as a list using the `"$@"`
+
+1. Edit the script count-records.sh with Nano and fill in the two ____ placeholders with $@ and -l (the letter) respectively so that it counts the number of lines in one or more files, excluding the first line of each.
+
+```
+nano count-records.sh
+```
+
+> tail -q -n +2 `$@` | wc `-l`
+
+```
+ctrl + o, enter
+ctrl + x
+```
+
+2. Run count-records.sh on seasonal/*.csv and redirect the output to num-records.out using >.
+
+bash count-records.sh seasonal/*.csv > num-records.out
+
 ### How can I process a single argument?
 ### How can one shell script do many things?
 ### How can I write loops in a shell script?
